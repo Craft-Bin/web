@@ -1,0 +1,21 @@
+.container
+  %ul.clean-btn{style: 'margin-top: 30px;'}
+    - if params[:controller] != 'home'
+      %li
+        %a.clean-btn{href: '/'}
+          = icon :home
+          Back
+    .pull-right
+      - if !params[:controller].include? 'devise'
+        - if user_signed_in?
+          .dropdown
+            %a.clean-btn.dropdown-toggle#userdropdown{'data-toggle' => 'dropdown'}
+              = icon :user
+              = current_user.email
+            %ul.dropdown-menu{'aria-labelledby' => 'userdropdown'}
+              %li
+                %a.dropdown-item{href: '#'} Hello
+        - else
+          %a.clean-btn{href: '/users/sign_in'}
+            = icon 'sign-in'
+            Sign In

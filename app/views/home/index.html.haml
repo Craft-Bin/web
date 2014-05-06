@@ -1,0 +1,15 @@
+%h1.title CRAFTBIN
+%p.lead.description The easiest way to share your Minecraft creations
+.home-btns
+  = btn icon('cloud-download') + ' Download Server Plugin', nil, size: :lg, :style => 'margin-right: 10px;'
+  = btn icon(:th) + ' Browse Creations', :primary, size: :lg, link: '/browse'
+
+/- create_map top, 'app/assets/images/new.png'
+
+.row.text-center
+  .col-xs-4
+    = icon :book, size=5
+  .col-xs-4
+    = icon :rocket, size=5
+  .col-xs-4
+    = icon 'code-fork', size=5

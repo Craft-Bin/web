@@ -1,0 +1,22 @@
+.description{style: 'margin: 40px 0;'}= @schem.name
+/= @schem
+.row
+  .col-xs-8
+  .col-xs-4.view-sidebar
+    Block Count:
+    %strong= @schem.width * @schem.height * @schem.length
+    %br
+    Dimensions:
+    %strong= "#{@schem.width} x #{@schem.height} x #{@schem.length}"
+    %br
+    Entities:
+    %strong= @schem.entity_count
+    %br
+    Block Occurances:
+    %br
+    - @schem.block_occurances.each_pair do |block, num|
+      %small
+        %strong= "#{block}: #{num}"
+        %br
+
+

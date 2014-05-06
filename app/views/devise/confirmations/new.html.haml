@@ -1,0 +1,16 @@
+.row
+  .col-xs-5
+    %h1 Resend confirmation
+    %hr
+    = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+      = devise_error_messages!
+
+      %div
+        = f.label :email
+        %br
+        = f.email_field :email, :autofocus => true, :class => 'form-control'
+        %br
+      %div
+        = f.submit "Resend confirmation instructions", btn_class(:primary)
+  .col-xs-5.pull-right
+    = render "devise/shared/links"

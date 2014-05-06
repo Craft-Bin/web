@@ -1,0 +1,24 @@
+.row
+  .col-xs-4
+    %h1 Sign up
+    %hr
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = devise_error_messages!
+
+      %div
+        = f.label :email
+        %br
+        = f.email_field :email, :autofocus => true, :class => 'form-control'
+        %br
+      %div
+        = f.label :password
+        = f.password_field :password, :class => 'form-control'
+        %br
+      %div
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, :class => 'form-control'
+        %br
+      %div
+        = f.submit "Sign up", btn_class(:primary)
+  .col-xs-5.pull-right
+    = render "devise/shared/links"
