@@ -17,5 +17,6 @@
 
 mongoid.yml
 devise_secret_key_base.txt
+mail.yml
 
 .idea

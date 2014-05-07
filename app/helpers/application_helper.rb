@@ -31,13 +31,17 @@ module ApplicationHelper
     {:class => 'btn btn-' + type.to_s}
   end
 
+  def form_class
+    {:class => 'form-control'}
+  end
+
   def btn_size(type, size, text, url)
     content_tag(:a, text, :class => 'btn btn-' + type.to_s + ' btn-' + size.to_s, href: url)
   end
 
   def icon(name, size=1, fw=nil)
     options = {}
-    options[:class] = 'fa fa-' + name.to_s
+    options[:class] = 'fa fa-' + name.to_s.gsub('_', '-')
     if size > 1 and size < 6
       options[:class] += ' fa-' + size.to_s + 'x'
     end

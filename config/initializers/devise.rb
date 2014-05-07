@@ -10,7 +10,9 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  mail = YAML.load_file(File.join(Rails.root, 'config', 'mail.yml'))['smtp']
+  email = mail['email'] == nil ? mail['username'] + '@' + mail['domain'] : mail['email']
+  config.mailer_sender = email
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

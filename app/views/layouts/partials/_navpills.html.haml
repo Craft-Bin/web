@@ -9,13 +9,16 @@
       - if !params[:controller].include? 'devise'
         - if user_signed_in?
           .dropdown
-            %a.clean-btn.dropdown-toggle#userdropdown{'data-toggle' => 'dropdown'}
+            %a.clean-btn.dropdown-toggle#userdropdown{'data-toggle' => 'dropdown', href: ''}
               = icon :user
               = current_user.email
             %ul.dropdown-menu{'aria-labelledby' => 'userdropdown'}
               %li
-                %a.dropdown-item{href: '#'} Hello
+                = link_to(icon(:sign_out) + ' Sign out', destroy_user_session_path, :method => 'delete', :class => 'dropdown-item')
+                /%a.dropdown-item{href: destroy_user_session_path, method: 'delete'}
+                /= link_to('Logout', destroy_user_session_path, :method => 'delete')
+                /Log Out
         - else
           %a.clean-btn{href: '/users/sign_in'}
-            = icon 'sign-in'
+            = icon :sign_in
             Sign In

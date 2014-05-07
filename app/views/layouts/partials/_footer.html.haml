@@ -1,5 +1,9 @@
 #footer
   .container.text-muted.text-center
-    Made by augustt198 
-    %a{href: 'http://github.com/augustt198', style: 'font-size: 16px;'}
-      = icon 'code', size=1, :fw
+    Made by
+    %a{href: 'http://github.com/augustt198'} augustt198
+    •
+    - sha = `git rev-parse --short HEAD`
+    - if !sha.include? 'fatal'
+      Revision
+      %a{href: 'http://github.com/craft-bin/web/commit/' + sha}= sha

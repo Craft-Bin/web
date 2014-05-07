@@ -23,4 +23,21 @@ CraftBinWeb::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  yaml = YAML.load_file File.join(Rails.root, 'config', 'mail.yml')
+  mail = yaml['smtp']
+  puts 'Using smtp mailing: ' + mail.to_s
+
+  config.action_mailer.default_url_options = {:host => yaml['host']}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => mail['address'],
+    :port => mail['port'].to_i,
+    :domain => mail['domain'],
+    :user_name => mail['username'],
+    :password => mail['password'],
+    :authentication => 'plain',
+    :enable_starttls_auto => true
+  }
+
 end
