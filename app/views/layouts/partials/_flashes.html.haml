@@ -1,6 +1,6 @@
 .container{style: 'margin-top: 20px;'}
   - flash.each do |type, msg|
-    - type = 'danger' if type == :alert
+    - type = 'danger' if type == :alert or type == :error
     - type = 'info' if type == :notice
     %div{:class => 'alert alert-dismissable alert-' + type.to_s}
       = (icon :warning) if type.to_s == 'danger'

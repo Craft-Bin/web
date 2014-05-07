@@ -1,4 +1,8 @@
-.description{style: 'margin: 40px 0;'}= @schem.name
+.description{style: 'margin: 40px 0;'}
+  = @schem.name
+  - if @schem.unlisted?
+    %span{:class => 'label label-info'} Unlisted
+
 /= @schem
 .row
   .col-xs-8

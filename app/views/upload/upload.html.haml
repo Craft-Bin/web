@@ -1,0 +1,16 @@
+%h1 Upload a Schematic
+%hr
+.row
+  .col-xs-5
+    = form_for Schematic.new, html: {id: 'file-upload'} do |f|
+      = f.label 'Name'
+      = f.text_field :name, form_class
+      %br
+      = f.file_field :schematic
+      %br
+      = f.label :unlisted do
+        = f.check_box :unlisted
+        %strong Unlisted?
+      %em Schematic will be visible only to people with the link
+      %br
+      = f.submit 'Upload', btn_class(:success)

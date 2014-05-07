@@ -14,6 +14,7 @@ gem 'haml'
 
 # Uploading
 gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 # Reading Schematics
 gem 'mc-schematic', github: 'craft-bin/mc-schematic'

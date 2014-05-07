@@ -15,3 +15,8 @@
     = yield
   = render 'layouts/partials/footer'
   %script{:src=>"//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"}
+
+:javascript
+  $(document).ready(function(){
+      $("[rel=tooltip]").tooltip({ placement: 'top'});
+  });

@@ -5,7 +5,12 @@
         %a.clean-btn{href: '/'}
           = icon :home
           Back
+
     .pull-right
+      %a.clean-btn{href: '/upload', rel: 'tooltip', title: 'Upload Schematic'}
+        &nbsp;
+        = icon :cloud_upload
+        &nbsp;
       - if !params[:controller].include? 'devise'
         - if user_signed_in?
           .dropdown
@@ -14,11 +19,13 @@
               = current_user.email
             %ul.dropdown-menu{'aria-labelledby' => 'userdropdown'}
               %li
-                = link_to(icon(:sign_out) + ' Sign out', destroy_user_session_path, :method => 'delete', :class => 'dropdown-item')
-                /%a.dropdown-item{href: destroy_user_session_path, method: 'delete'}
-                /= link_to('Logout', destroy_user_session_path, :method => 'delete')
-                /Log Out
+                %a.dropdown-item{href: '/creations'}
+                  = icon :archive
+                  Your Creations
+              %li
+                = link_to(icon(:sign_out, size=1, :fw) + ' Sign out', destroy_user_session_path, :method => 'delete', :class => 'dropdown-item')
+
         - else
           %a.clean-btn{href: '/users/sign_in'}
-            = icon :sign_in
+            = icon :sign_in, size=1, :fw
             Sign In
