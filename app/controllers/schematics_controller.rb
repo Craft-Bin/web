@@ -6,13 +6,17 @@ class SchematicsController < ApplicationController
   end
 
   def create
-    schem = Schematic.new(params.require(:schematic).permit(:name, :schematic))
+    schem = Schematic.new(params.require(:schematic).permit(:name, :schematic, :unlisted))
     if schem.name.blank?
       flash[:error] = 'Name cannot be blank'
       redirect_to '/upload'
       return
     end
-
+    if params[:schematic][:schematic] == nil
+      flash[:error] = 'You must select a file'
+      redirect_to '/upload'
+      return
+    end
     begin
       schem.save!
     rescue Mongoid::Errors::Validations

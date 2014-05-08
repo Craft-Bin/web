@@ -5,6 +5,8 @@ class SchematicController < ApplicationController
     if @schem == nil
       raise ActionController::RoutingError.new 'Not found'
     end
+    @schem.views = @schem.views + 1
+    @schem.save!
   end
 
   def user_browse

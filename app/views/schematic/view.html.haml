@@ -1,12 +1,13 @@
 .description{style: 'margin: 40px 0;'}
   = @schem.name
-  - if @schem.unlisted?
-    %span{:class => 'label label-info'} Unlisted
 
 /= @schem
 .row
   .col-xs-8
   .col-xs-4.view-sidebar
+    - if @schem.unlisted?
+      %span{:class => 'label label-warning'} Unlisted
+      %br
     Block Count:
     %strong= @schem.width * @schem.height * @schem.length
     %br
@@ -26,5 +27,9 @@
         = icon :times, size=1, :fw
         %strong= num
         %br
-
+    Views:
+    %strong= @schem.views
+    %br
+    %a{href: root_url + @schem.schematic.to_s, :class => 'btn btn-default btn-lg'}
+      = icon :cloud_download, size=5
 
