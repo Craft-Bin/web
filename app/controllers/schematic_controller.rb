@@ -15,11 +15,11 @@ class SchematicController < ApplicationController
       redirect_to '/users/sign_in'
       return
     end
-    @list = current_user.schematics
+    @list = current_user.schematics.desc(:created_at)
   end
 
   def browse
-    @list = Schematic.all
+    @list = Schematic.where(unlisted: 0).desc(:created_at)
   end
 
 
