@@ -16,11 +16,15 @@
     Entities:
     %strong= @schem.entity_count
     %br
-    Block Occurances:
+    Block Occurrences:
     %br
-    - @schem.block_occurances.each_pair do |block, num|
+    - @schem.block_occurrences.sort_by{|k,v| v}.reverse.each do |pair|
+      - block = pair[0]
+      - num = pair[1]
       %small
-        %strong= "#{block}: #{num}"
+        = block_image block
+        = icon :times, size=1, :fw
+        %strong= num
         %br
 
 

@@ -7,10 +7,11 @@
           Back
 
     .pull-right
-      %a.clean-btn{href: '/upload', rel: 'tooltip', title: 'Upload Schematic'}
-        &nbsp;
-        = icon :cloud_upload
-        &nbsp;
+      - if params[:controller] != 'schematics'
+        %a.clean-btn{href: '/upload', rel: 'tooltip', title: 'Upload Schematic'}
+          &nbsp;
+          = icon :cloud_upload
+          &nbsp;
       - if !params[:controller].include? 'devise'
         - if user_signed_in?
           .dropdown

@@ -51,4 +51,8 @@ module ApplicationHelper
     content_tag(:i, '', options)
   end
 
+  def block_image(name)
+    content_tag(:img, '', src: root_url + "/images/minecraft/blocks/#{name.to_s}.png")
+  end
+
 end

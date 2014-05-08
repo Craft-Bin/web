@@ -15,6 +15,7 @@
 /log/*.log
 /tmp
 uploads/
+images/
 
 mongoid.yml
 devise_secret_key_base.txt

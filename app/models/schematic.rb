@@ -25,7 +25,7 @@ class Schematic
   field :offset_length, type: Integer, default: 0
 
   field :entity_count, type: String, default: 0
-  field :block_occurances, type: Hash, default: {}
+  field :block_occurrences, type: Hash, default: {}
 
   def file_name
     File.join(Rails.root, 'public', schematic.url)

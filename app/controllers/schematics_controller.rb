@@ -1,6 +1,10 @@
 require 'securerandom'
 class SchematicsController < ApplicationController
 
+  def upload
+
+  end
+
   def create
     schem = Schematic.new(params.require(:schematic).permit(:name, :schematic))
     if schem.name.blank?
@@ -22,6 +26,24 @@ class SchematicsController < ApplicationController
       schem.width = schem_file.width
       schem.height = schem_file.height
       schem.length = schem_file.length
+      blocks = {}
+      schem_file.blocks.each do |block|
+        next if block == 0
+        count = blocks[block]
+        if count == nil
+          blocks[block] = 1
+        else
+          blocks[block] = count + 1
+        end
+      end
+      #render json: blocks
+      #return
+      materials = {}
+      blocks.each_pair do |id, count|
+        name = MCSchematic.get_block_name id
+        materials[name] = count
+      end
+      schem.block_occurrences = materials
     rescue MCSchematic::SchematicException::UnreadableFile, MCSchematic::SchematicException::IncorrectFormat, Zlib::GzipFile::Error
       flash[:error] = "Sorry, we couldn't read that schematic"
       redirect_to '/upload'
