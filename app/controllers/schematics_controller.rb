@@ -45,6 +45,7 @@ class SchematicsController < ApplicationController
       materials = {}
       blocks.each_pair do |id, count|
         name = MCSchematic.get_block_name id
+        next if name == nil
         materials[name] = count
       end
       schem.block_occurrences = materials

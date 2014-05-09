@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/craft-bin/mc-schematic.git
-  revision: 682704f0a720718723d44401a2deab0e00300ec9
+  revision: d5bea69b6d42e7d365937f924e9d24b92f797a9c
   specs:
     mc-schematic (0.0.1)
       nbtfile (~> 0.2.0)
